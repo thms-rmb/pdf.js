@@ -2168,6 +2168,7 @@ function webViewerInitialized() {
   if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     const queryString = document.location.search.substring(1);
     const params = parseQueryString(queryString);
+    PDFViewerApplication.viewerPrefs['chunksize'] = params.chunksize;  
     file = "file" in params ? params.file : AppOptions.get("defaultUrl");
     validateFileURL(file);
   } else if (PDFJSDev.test("MOZCENTRAL")) {
