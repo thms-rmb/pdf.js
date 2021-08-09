@@ -2168,7 +2168,10 @@ function webViewerInitialized() {
   if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     const queryString = document.location.search.substring(1);
     const params = parseQueryString(queryString);
-    PDFViewerApplication.viewerPrefs['chunksize'] = params.chunksize;  
+    const rangeChunkSize = parseInt(params.chunksize, 10);
+    if (!isNaN(rangeChunkSize)) {
+      AppOptions.set("rangeChunkSize", rangeChunkSize);
+    }
     file = "file" in params ? params.file : AppOptions.get("defaultUrl");
     validateFileURL(file);
   } else if (PDFJSDev.test("MOZCENTRAL")) {

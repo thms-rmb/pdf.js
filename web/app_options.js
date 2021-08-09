@@ -230,6 +230,11 @@ const defaultOptions = {
     value: 1,
     kind: OptionKind.API,
   },
+  rangeChunkSize: {
+    /** @type {number} */
+    value: 65536, // 2^16 = 65536
+    kind: OptionKind.API,
+  },
 
   workerPort: {
     /** @type {Object} */
